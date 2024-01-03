@@ -1,7 +1,7 @@
 import styles from './styles.module.css'
-import Card from "../Card/Card.jsx";
-import CoinsList from "../CoinsList/CoinsList";
-import FilterBlock from "../FilterBlock/FilterBlock.jsx";
+import Card from "../../components/Card/Card.jsx";
+import CoinsList from "../../components/CoinsList/CoinsList.jsx";
+import FilterBlock from "../../components/FilterBlock/FilterBlock.jsx";
 
 const Main = ({ balance, setBalance, coins, fiteredCoins, setCoins }) => {
     console.log(balance);

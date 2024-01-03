@@ -1,18 +1,18 @@
 import Header from "./components/Header/Header.jsx";
-import Main from "./components/Main/Main.jsx";
+import Main from "./pages/Main/Main.jsx";
 import {useEffect, useState} from "react";
 import {getCoins} from "./api/api.js";
 
 function App() {
   const [balance, setBalance] = useState(0);
   const [coins, setCoins] = useState([]);
-  const [fiteredCoins, setfiteredCoins] = useState([])
+  const [fiteredCoins, setFiteredCoins] = useState([])
 
     useEffect(() => {
     const fetchData = async() => {
         const data = await getCoins();
         setCoins(data.coins);
-        setfiteredCoins(data.coins)
+        setFiteredCoins(data.coins)
     };
     fetchData();
     }, []);
@@ -21,7 +21,7 @@ function App() {
     <>
         <Header />
         <Main
-            setCoins={setfiteredCoins}
+            setCoins={setFiteredCoins}
             coins={coins}
             balance={balance}
             setBalance={setBalance}

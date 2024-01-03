@@ -1,10 +1,16 @@
 import './styles.css'
-import {useRef, useState} from "react";
+import {useEffect, useState} from "react";
 
-const FilterBlock = () => {
-    const [value, setValue] = useState('');
-    const inputRef = useRef(null)
-    console.log(inputRef)
+const FilterBlock = ({coins, setCoins}) => {
+  const [value, setValue] = useState('');
+
+  useEffect(() => {
+      const filtredCoins = coins.filter(coin => {
+          return coin.name.toLowerCase().includes(value.toLowerCase())
+      })
+      setCoins(filtredCoins)
+  }, [value])
+
   return (
       <div className='filter-block'>
           <input

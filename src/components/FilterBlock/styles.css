@@ -5,6 +5,7 @@
     padding: 10px;
     background-color: aliceblue;
     gap: 12px;
+    border-radius: 12px;
 }
 
 .input {

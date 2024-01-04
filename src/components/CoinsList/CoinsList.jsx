@@ -1,9 +1,13 @@
 import './styles.css'
+import {useContext} from "react";
+import {CoinsContext} from "../context/coinsContext.jsx";
 
 const CoinsList = ({ coins }) => {
+    const coinsContext = useContext(CoinsContext)
+    const {filteredCoins} = coinsContext
   return (
       <ul className='coins-list'>
-          {coins.map((coin) => {
+          {filteredCoins.map((coin) => {
               return <li className='coins-item' key={coin.uuid}>
                   <div className='coins-item__info'>
                       <img className='coins-item__Logo' src={coin.iconUrl} alt={coin.name}/>
@@ -13,10 +17,10 @@ const CoinsList = ({ coins }) => {
                   </div>
                   <div className='coins-item__price'>
                       <p style={{color: coin.color}}>
-                          {(+coin.price).toFixed(2)} USD
+                          {(+coin.price).toFixed(3)} USD
                       </p>
                       <p style={{color: coin.color}}>
-                          {(+coin.btcPrice).toFixed(2)} BTC
+                          {(+coin.btcPrice).toFixed(3)} BTC
                       </p>
                   </div>
               </li>

@@ -8,7 +8,7 @@ const Card = ({balance, setBalance, byBalance}) => {
           <div className='card-block'>
               <p>CRYPTO CARD</p>
               <button onMouseEnter={() => console.log('---enter')}
-                      onClick={() => setBalance(prev => prev + 100)}>Add money</button>
+                      onClick={setBalance}>Add money</button>
           </div>
           <div className='card-block'>
               <p>ILYA</p>

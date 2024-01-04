@@ -1,32 +1,39 @@
 import Header from "./components/Header/Header.jsx";
 import Main from "./pages/Main/Main.jsx";
-import {useEffect, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import {getCoins} from "./api/api.js";
+import {CoinsContext} from "./components/context/coinsContext.jsx";
 
 function App() {
   const [balance, setBalance] = useState(0);
   const [coins, setCoins] = useState([]);
-  const [fiteredCoins, setFiteredCoins] = useState([])
+  const [filteredCoins, setFilteredCoins] = useState([])
 
     useEffect(() => {
     const fetchData = async() => {
         const data = await getCoins();
         setCoins(data.coins);
-        setFiteredCoins(data.coins)
+        setFilteredCoins(data.coins)
     };
     fetchData();
     }, []);
-    console.log(coins);
+
+  const addBalance = useCallback(() => {
+      setBalance((prev) => prev + 100)
+  }, [])
+
     return (
     <>
-        <Header />
-        <Main
-            setCoins={setFiteredCoins}
-            coins={coins}
-            balance={balance}
-            setBalance={setBalance}
-            fiteredCoins={fiteredCoins}
-        />
+        <CoinsContext.Provider value={{ coins, filteredCoins }}>
+            <Header />
+            <Main
+                setCoins={setFilteredCoins}
+                coins={coins}
+                balance={balance}
+                setBalance={addBalance}
+                fiteredCoins={filteredCoins}
+            />
+        </CoinsContext.Provider>
     </>
   )
 }

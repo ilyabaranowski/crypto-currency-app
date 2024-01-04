@@ -2,7 +2,7 @@ import './styles.css'
 import {useContext} from "react";
 import {CoinsContext} from "../context/coinsContext.jsx";
 
-const CoinsList = ({ coins }) => {
+const CoinsList = () => {
     const coinsContext = useContext(CoinsContext)
     const {filteredCoins} = coinsContext
   return (

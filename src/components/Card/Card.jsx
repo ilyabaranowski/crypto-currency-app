@@ -2,7 +2,8 @@ import './styles.css'
 import {withByBalance} from "../helpers/hoc/withByBalance.jsx";
 
 const Card = ({balance, setBalance, byBalance}) => {
-    console.log({byBalance})
+  console.log({byBalance})
+
   return (
       <div className='card'>
           <div className='card-block'>
@@ -16,6 +17,7 @@ const Card = ({balance, setBalance, byBalance}) => {
           </div>
       </div>
   )
+
 }
 
 export default withByBalance(Card)
